@@ -1,5 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+} // Load environment variables
 const express = require("express");
-require("dotenv").config(); // Load environment variables
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken"); // Import jsonwebtoken
