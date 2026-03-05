@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 const Product = require("../models/Product");
 
-// 🔗 CONNECT DB
-mongoose.connect("mongodb://localhost:27017/ecom");
+// 🔗 MongoDB Atlas
+mongoose.connect(process.env.MONGO_URI);
 
 // 🔹 PRODUCT DATA
 const products = [

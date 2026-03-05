@@ -16,8 +16,7 @@ const Wishlist = require("./models/Wishlist");
 
 
 const app = express();
-const PORT = 5000;
-
+const PORT = process.env.PORT || 5000;   //MongoDB Atlas
 
 // CONNECT DATABASE
 connectDB();
@@ -47,6 +46,6 @@ app.get("/", (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+app.listen(PORT, () => {                //MongoDB Atlas
+  console.log(`Server running on port ${PORT}`);
 });
