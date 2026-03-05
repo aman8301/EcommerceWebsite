@@ -5,6 +5,7 @@ const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken"); // Import jsonwebtoken
+const path = require("path");
 const connectDB = require("./config/db");
 
 
@@ -23,6 +24,9 @@ const PORT = process.env.PORT || 5000;   //MongoDB Atlas
 // CONNECT DATABASE
 connectDB();
 
+
+//FrontEnd Connect for render
+app.use(express.static(path.join(__dirname, "../FrontEnd")));
 
 // MIDDLEWARE
 app.use(cors());
@@ -44,9 +48,8 @@ app.use("/api/products", productRoute);
 
 
 app.get("/", (req, res) => {
-  res.send("Backend with MongoDB is running 🚀");
+  res.sendFile(path.join(__dirname, "../FrontEnd/index.html"));    //FrontEnd Connect for render
 });
-
 
 app.listen(PORT, () => {                //MongoDB Atlas
   console.log(`Server running on port ${PORT}`);
